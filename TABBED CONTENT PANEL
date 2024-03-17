@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabbed Content Panels</title>
+<style>
+  /* Styles for Tabs */
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+
+  .tab.active {
+    border-color: blue;
+  }
+
+  /* Styles for Content Panels */
+  .content {
+    display: none;
+    padding: 20px;
+  }
+
+  .content.active {
+    display: block;
+    animation: fade-in 0.5s ease;
+  }
+
+  /* Fade-in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Hide radio buttons */
+  input[type="radio"] {
+    display: none;
+  }
+
+  /* Show content panel based on checked radio */
+  #tab1:checked ~ #content-tab1,
+  #tab2:checked ~ #content-tab2,
+  #tab3:checked ~ #content-tab3 {
+    display: block;
+    animation: fade-in 0.5s ease;
+  }
+
+  /* Active state indication */
+  #tab1:checked ~ .tabs #tab1,
+  #tab2:checked ~ .tabs #tab2,
+  #tab3:checked ~ .tabs #tab3 {
+    border-color: blue;
+  }
+</style>
+</head>
+<body>
+
+<input type="radio" id="tab1" name="tabs" checked>
+<input type="radio" id="tab2" name="tabs">
+<input type="radio" id="tab3" name="tabs">
+
+<div class="tabs">
+  <label class="tab" for="tab1">Tab 1</label>
+  <label class="tab" for="tab2">Tab 2</label>
+  <label class="tab" for="tab3">Tab 3</label>
+</div>
+
+<div id="content-tab1" class="content active">
+  <h2>Tab 1 Content</h2>
+  <p>This is the content for Tab 1.</p>
+</div>
+
+<div id="content-tab2" class="content">
+  <h2>Tab 2 Content</h2>
+  <p>This is the content for Tab 2.</p>
+</div>
+
+<div id="content-tab3" class="content">
+  <h2>Tab 3 Content</h2>
+  <p>This is the content for Tab 3.</p>
+</div>
+
+</body>
+</html>
